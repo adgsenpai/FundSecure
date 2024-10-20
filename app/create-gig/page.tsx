@@ -572,7 +572,7 @@ export default function CreateGig() {
 
             {/* Goal */}
             <div className="mb-6">
-              <label className="block text-lg font-medium mb-2">Goal Amount ($)</label>
+              <label className="block text-lg font-medium mb-2">Goal Amount (ZAR)</label>
               <div className="flex items-center">
                 <FaBullseye className="text-green-500 mr-2" />
                 <input
@@ -732,7 +732,7 @@ export default function CreateGig() {
               <div className="flex items-center mb-4">
                 <FaBullseye className="text-green-500 mr-2" />
                 <span className="mr-4">
-                  Goal: ${formData.goal || 'Amount'}
+                  Goal: ZAR {formData.goal || 'Amount'}
                 </span>
                 <FaCalendarAlt className="text-green-500 mr-2" />
                 <span>

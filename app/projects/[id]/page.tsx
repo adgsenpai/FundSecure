@@ -172,7 +172,7 @@ export default function ProjectPage({ params }: { params: { id: number } }) {
 
       {/* Project Details */}
       <div className="text-center mb-8">
-        <p className="text-2xl font-semibold">Goal: ${project.goal}</p>
+        <p className="text-2xl font-semibold">Goal: ZAR {project.goal}</p>
         <p className="text-gray-600">
           Deadline: {new Date(project.deadline).toLocaleDateString()}
         </p>
@@ -188,7 +188,7 @@ export default function ProjectPage({ params }: { params: { id: number } }) {
         ></div>
       </div>
       <p className="text-center">
-        Raised ${totalTips} of ${goal} ({progressPercentage.toFixed(2)}%)
+        Raised ZAR {totalTips} of ZAR{goal} ({progressPercentage.toFixed(2)}%)
       </p>
 
       {/* Confetti and Message for Goal Completion */}
@@ -247,7 +247,7 @@ export default function ProjectPage({ params }: { params: { id: number } }) {
                     <td className="px-4 py-2">
                       {new Date(tip.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-2">${tip.amount}</td>
+                    <td className="px-4 py-2">ZAR {tip.amount}</td>
                     <td className="px-4 py-2">{tip.hash}</td>
                     {/* Add more cells if needed */}
                   </tr>
