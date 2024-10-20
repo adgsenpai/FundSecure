@@ -11,7 +11,6 @@ FundSecure is a fundraising platform that allows users to create projects, recei
 ## Table of Contents
 
 - [How the App Works](#how-the-app-works)
-- [Endpoints](#endpoints)
 - [OpenAI DALL·E 3 Integration](#openai-dall·e-3-integration)
 - [Architecture](#architecture)
   - [Component Diagram](#component-diagram)
@@ -45,8 +44,7 @@ graph LR
     B -- API Calls --> C[Backend ExpressJS]
     C -- ORM --> D[Prisma]
     D -- Database --> E[MSSQL]
-    C -- Payments --> F[ILP Express Server]
-    F -- Ledger --> G[TigerBeetleDB]
+    C -- Payments --> F[ILP Express Server]    
     F -- Payments --> H[Rafiki Wallet]
     C -- OpenAI API --> I[DALL·E 3]
 ```
@@ -69,8 +67,7 @@ sequenceDiagram
     Frontend->>Backend: Submit donation/tip
     Backend->>Prisma: Save transaction request
     Prisma->>MSSQL: Store transaction details
-    Backend->>ILPServer: Initiate payment processing
-    ILPServer->>TigerBeetleDB: Record transaction in ledger
+    Backend->>ILPServer: Initiate payment processing    
     ILPServer->>RafikiWallet: Process payment via Interledger
     RafikiWallet->>ILPServer: Confirm payment
     ILPServer->>Backend: Payment status update
