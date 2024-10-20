@@ -3,9 +3,7 @@
 FundSecure is a fundraising platform that allows users to create projects, receive donations/tips securely using the Interledger Protocol (ILP), and leverages OpenAI's DALL·E 3 for image generation. The platform ensures secure transactions and seamless integration between the frontend and backend services.
 
 
-![image](https://github.com/user-attachments/assets/fc1ab7be-2709-427d-ba1e-0364b09fa6a7)
-
-
+[![Video Title](https://img.youtube.com/vi/7rTIABujkPk/0.jpg)](https://youtu.be/7rTIABujkPk)
 
 
 ## Table of Contents
