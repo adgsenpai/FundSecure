@@ -1,0 +1,87 @@
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                   Int                  @id @default(autoincrement())
+  name                 String?
+  email                String?              @unique
+  emailVerified        DateTime?
+  image                String?
+  paymentPointer       String?
+  projects             Project[]  
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  accounts             Account[]
+  sessions             Session[]
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  title        String   @db.VarChar(Max)
+  description  String   @db.VarChar(Max)
+  bannerImage  String   @db.VarChar(Max)
+  markDownCode String   @db.VarChar(Max)
+  tips         Tip[]
+  goal         String   @db.VarChar(Max)
+  deadline     String   @db.VarChar(Max)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Tip {
+  id          Int      @id @default(autoincrement())
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   Int
+  amount      Float
+  timeStamp   String   // You can convert this to DateTime later if needed
+  hash        String   @db.VarChar(8000) @unique
+  interactRef String   @db.VarChar(Max) // Same for interact_ref
+  createdAt   DateTime @default(now())
+}
+
+model Account {
+  id                Int     @id @default(autoincrement())
+  userId            Int
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.VarChar(Max)
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  id         Int      @id @default(autoincrement())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
