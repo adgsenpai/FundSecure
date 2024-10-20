@@ -70,7 +70,7 @@ export default function Home() {
           <div className="mt-12 flex justify-center">
             <img
               alt="Workflow Diagram"
-              src="https://mermaid.ink/svg/pako:eNp1k0Fv2zAMhf8KoZMHdOvdhwLJggEB2i5LNuziCyfRLhdb8ii6WFD0v0-2VyCGVZ8s8X1P4iP0YmxwZEoT6c9A3tKOsRHsKg_p61GULffoFX5EkvXuFwleyTsoHumvfvodP6w1W7TnSbI57DPlw3F_ethA8fX4kKuGqI3Q6ds9FLttRvCdG5Itkba020JxTy6tM7oj1nxm-IltSwrFAS8deR3vO2vH_j7e3a0bKmFjLcUI9eCdIEf2DfQtah3kf05rKDkt2i7hNPzqWMEFj8rB3yr3M7zQJe46j4ThM4EK-oh25EDGQUWd2WvtiC7DSrQGWeKOFLmN-aPzWZZwJBvELXzYQzuV807vpV3CQcKUZj9vwTMj7FN6cm33Hr6O9XPwNUv3Zpe_TW6oj0G5vkxjh1BDHKYhV97cmI6kQ3bpVbyMfpXRJ-qoMmX6dSjnylT-Nelw0HC6eGtKlYFujISheTJljW1Mq6F3qG_vaZa8_gOV8SUm"
+              src="https://mermaid.ink/svg/pako:eNqdk8tOwzAQRX9l5FWQeOyzQGopSJVaCA2ITTZDPAmmiR3Gk4oK8e84CZWokm7wyo97rmbuyF8qd5pUrDx9tGRzWhgsGevMQlgNspjcNGgFnj3x-PaOnRWyGqJ7-pTLd3821swx3_aSWbKceE42y3Q9g-hhs556dV5KpvRxBdFiPiF4MiXxnEgqWswhWpEO5wndBguzNfCCVUUCUYL7mqx09Q7arr-L6-txQzHM8py8h6K1mtF4Y0toKpTC8W9OYyg4HbUdQ9q-1kZAO4tinL0S0wzwkS5wf_MIGO4IhNF6zDsOuBuUl2N2uUrg9rPhrsyUeEf8L7u_2oCu00PsARTHx6QmQVP5jptu5FTiMSTs-kSb4Qp2BmEZEuSqn95gdwofR3vjbGG4PthNVzM12Hsnptj3owdXgG_7QWdWnauauEajw8_46vwyJW9UU6bisNXI20xl9jvosBWX7m2uYuGWzhW7tnxTcYGVD6e20SiHPzVIvn8ArfQkbA"
               className="rounded-lg shadow-lg"              
             />
           </div>
