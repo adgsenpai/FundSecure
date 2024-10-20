@@ -5,6 +5,7 @@ FundSecure is a fundraising platform that allows users to create projects, recei
 
 [![Video Title](https://img.youtube.com/vi/7rTIABujkPk/0.jpg)](https://youtu.be/7rTIABujkPk)
 
+Click the image to view the video
 
 ## Table of Contents
 
