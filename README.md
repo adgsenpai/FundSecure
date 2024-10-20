@@ -2,6 +2,12 @@
 
 FundSecure is a fundraising platform that allows users to create projects, receive donations/tips securely using the Interledger Protocol (ILP), and leverages OpenAI's DALL·E 3 for image generation. The platform ensures secure transactions and seamless integration between the frontend and backend services.
 
+
+![image](https://github.com/user-attachments/assets/fc1ab7be-2709-427d-ba1e-0364b09fa6a7)
+
+
+
+
 ## Table of Contents
 
 - [How the App Works](#how-the-app-works)
@@ -35,11 +41,12 @@ FundSecure integrates with OpenAI's DALL·E 3 to allow users to generate unique 
 
 ```mermaid
 graph LR
-    A[User] -- Access --> B[Frontend (Next.js)]
-    B -- API Calls --> C[Backend (Express.js)]
+    A[User] -- Access --> B[Frontend NextJS]
+    B -- API Calls --> C[Backend ExpressJS]
     C -- ORM --> D[Prisma]
     D -- Database --> E[MSSQL]
-    C -- Payments --> F[ILP Express Server]    
+    C -- Payments --> F[ILP Express Server]
+    F -- Ledger --> G[TigerBeetleDB]
     F -- Payments --> H[Rafiki Wallet]
     C -- OpenAI API --> I[DALL·E 3]
 ```
@@ -49,19 +56,21 @@ graph LR
 ```mermaid
 sequenceDiagram
     participant User
-    participant Frontend as Frontend (Next.js)
-    participant Backend as Backend (Express.js)
-    participant Prisma as PRISMA (ORM)
-    participant MSSQL as MSSQL (DB)
-    participant ILPServer as ILP Express Server    
-    participant RafikiWallet as Rafiki Wallet (Payments)
+    participant Frontend as Frontend NextJS
+    participant Backend as Backend ExpressJS
+    participant Prisma as PRISMA ORM
+    participant MSSQL as MSSQL DB
+    participant ILPServer as ILP Express Server
+    participant TigerBeetleDB as TigerBeetleDB Ledger
+    participant RafikiWallet as Rafiki Wallet Payments
     participant OpenAI as OpenAI DALL·E 3
 
     User->>Frontend: Access fundraising platform
     Frontend->>Backend: Submit donation/tip
     Backend->>Prisma: Save transaction request
     Prisma->>MSSQL: Store transaction details
-    Backend->>ILPServer: Initiate payment processing    
+    Backend->>ILPServer: Initiate payment processing
+    ILPServer->>TigerBeetleDB: Record transaction in ledger
     ILPServer->>RafikiWallet: Process payment via Interledger
     RafikiWallet->>ILPServer: Confirm payment
     ILPServer->>Backend: Payment status update
@@ -107,17 +116,14 @@ Ensure you have the following installed:
    Example `.env` file:
 
    ```bash
-  GOOGLE_CLIENT_ID=
-  GOOGLE_CLIENT_SECRET=
-  NEXTAUTH_SECRET=
-  NEXTAUTH_URL=http://localhost:3000
-  OPENAI_API_KEY=
-  DATABASE_URL=
-  KEY_ID=
-  RECEIVING_WALLET_ADDRESS=
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=http://localhost:3000
+   OPENAI_API_KEY=your_openai_api_key
    ```
 
-   **Note**: Replace the empty string with your actual credentials.
+   **Note**: Replace the placeholders with your actual credentials.
 
 4. **Set up the database**:
 
@@ -127,7 +133,7 @@ Ensure you have the following installed:
    npx prisma db push
    ```
 
-5. **Run Docker (for microservices) optional! instead of step 8**:
+5. **Run Docker (for microservices)**:
 
    Start the Docker containers using Docker Compose:
 
@@ -239,7 +245,8 @@ model Tip {
 
 ## ILP Express Server (`ilp/server.js`)
 
-The ILP Express server handles payment processing via the Interledger Protocol. It communicates with the Rafiki Wallet for payment settlements.
+The ILP Express server handles payment processing via the Interledger Protocol. It communicates with the Rafiki Wallet for payment settlements and records transactions in TigerBeetleDB.
+
 **Key Functions:**
 
 - **`/create-payment` Endpoint**: Initiates a new payment process.
@@ -249,5 +256,16 @@ The ILP Express server handles payment processing via the Interledger Protocol. 
 **Note**: Ensure that you have the necessary environment variables and configuration set up for the ILP server to function correctly.
 
 ---
+
+### Screenshots
+
+
+![image](https://github.com/user-attachments/assets/a98c548f-84d8-4e03-a034-22cb003b41f8)
+![image](https://github.com/user-attachments/assets/085bc695-8531-4b49-a56d-c9d61c4face6)
+![image](https://github.com/user-attachments/assets/f2bdba4d-0aaa-4724-b31d-78fe12ae7bfb)
+![image](https://github.com/user-attachments/assets/b15ca0f1-093d-494b-b830-6588243603cd)
+![image](https://github.com/user-attachments/assets/9b131237-5e3a-40bb-863a-521f638e9796)
+![image](https://github.com/user-attachments/assets/ef8ea1e5-3904-44cf-85d7-b69f48c37b39)
+
 
 Feel free to contribute to the project or raise issues if you encounter any problems. Happy fundraising!
