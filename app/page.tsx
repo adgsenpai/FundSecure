@@ -107,18 +107,6 @@ const features = [
     ),
   },
   {
-    title: "High-Performance Ledger",
-    description:
-      "Utilize TigerBeetleDB to handle millions of transactions per second, providing real-time tracking and transparency for all your fundraising activities.",
-    demo: (
-      <div className="flex items-center justify-center">
-        <Image alt="TigerBeetleDB Ledger" src="/tigerbeetle-logo.png" width={100} height={100} 
-        unoptimized={true}
-        />
-      </div>
-    ),
-  },
-  {
     title: "Anonymous Transactions",
     description:
       "Protect your privacy with anonymous payments, allowing donors and recipients to engage without sharing personal information.",
